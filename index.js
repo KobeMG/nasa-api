@@ -26,7 +26,7 @@ const postImage = async () => {
     try {
         console.log("Logging in...");
         ig.state.generateDevice('universeapp111');
-        await ig.simulate.preLoginFlow();
+       // await ig.simulate.preLoginFlow();
         const user = await ig.account.login(process.env.INSTAGRAM_USERNAME, process.env.INSTAGRAM_PASSWORD);
 
         const { hdurl, title, explanation } = await fethData();
@@ -42,6 +42,7 @@ const postImage = async () => {
         console.log(published);
         deleteFile('image.jpg');
     } catch (error) {
+        console.log("Oh no! Something went wrong: ");
         console.log(error);
     }
 }
@@ -51,7 +52,7 @@ app.use(express.json());
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
-   // postImage();
+    //postImage();
 });
 
 const fethData = async () => {
