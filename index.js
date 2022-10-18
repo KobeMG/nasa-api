@@ -78,4 +78,5 @@ app.get('/hello', (req, res) => {
 app.post("/send", (req, res) => {
     console.log("POSTING....");
     postImage();
+    res.send('Success 😊');
 });
