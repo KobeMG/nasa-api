@@ -12,10 +12,6 @@ const readFileAsync = promisify(readFile);
 
 //CRON:
 var cron = require('node-cron');
-// cron.schedule('* * * * *', () => {
-//     console.log('running a task every minute');
-//   });
-
 //create a shedule every day at 7AM
 cron.schedule('0 7 * * *', () => {
     console.log('Good morning 😊, posting image...');
@@ -77,8 +73,5 @@ app.get('/hello', (req, res) => {
 
 app.post("/send", (req, res) => {
     console.log("POSTING....");
-    fethData().then((data) => {
-        res.send(data);
-    });
-
+    postImage();
 });
