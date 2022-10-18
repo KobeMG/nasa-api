@@ -20,7 +20,7 @@ var cron = require('node-cron');
 
 //create a shedule every 3 minutes
 cron.schedule('*/3 * * * *', () => {
-    console.log('Checking for new images...');
+    console.log('Good morning 😊, posting image...');
     postImage();
 });
 
