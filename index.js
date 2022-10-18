@@ -13,16 +13,12 @@ const readFileAsync = promisify(readFile);
 //CRON:
 var cron = require('node-cron');
 //create a shedule every day at 7AM
-// cron.schedule('0 7 * * *', () => {
-//     console.log('Good morning 😊, posting image...');
-//     postImage();
-// });
-
-//create a shedule every 3 minutes
-cron.schedule('*/3 * * * *', () => {
+cron.schedule('0 7 * * *', () => {
     console.log('Good morning 😊, posting image...');
     postImage();
 });
+
+//create a shedule every 3 minute
 
 
 const postImage = async () => {
