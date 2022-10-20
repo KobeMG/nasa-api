@@ -39,8 +39,13 @@ const postImage = async () => {
             file: await readFileAsync("image.jpg"),
             caption: caption
         });
-        console.log(published);
         deleteFile('image.jpg');
+        if (published) {
+            console.log("Image posted 😍");  
+        }else{
+            console.log("Image not posted 😢");
+        }
+       
     } catch (error) {
         console.log("Oh no! Something went wrong: ");
         console.log(error);
@@ -78,5 +83,5 @@ app.get('/hello', (req, res) => {
 app.post("/send", (req, res) => {
     console.log("POSTING....");
     postImage();
-    res.send('Success 😊');
+    res.send(`POSTING IMAGE AT....${new Date()}`);
 });
