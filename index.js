@@ -31,7 +31,7 @@ const postImage = async () => {
 
         const { hdurl, title, explanation } = await fethData();
         const pathImage = hdurl;
-        const caption = `${title} \n\n ${explanation} \n\n #NASA #NODEJS #SPACE #HELLOWORLD`;
+        const caption = `${title} \n\n${explanation} \n\n #NASA #NODEJS #SPACE #HELLOWORLD`;
         const image = await Jimp.read(pathImage);
         const writeImage = await image.writeAsync('image.jpg');
 
@@ -78,6 +78,7 @@ const deleteFile = (path) => {
 // End points
 app.get('/hello', (req, res) => {
     res.send('Hello World!');
+    console.log("Sayng hello ✌️");
 });
 
 app.post("/send", (req, res) => {
