@@ -10,17 +10,15 @@ const { readFile } = require('fs');
 const { promisify } = require('util');
 const readFileAsync = promisify(readFile);
 
-//CRON:
+/* //CRON:
 var cron = require('node-cron');
 //create a shedule every day at 7AM
 cron.schedule('0 7 * * *', () => {
     console.log('Good morning 😊, posting image...');
     postImage();
-});
+}); */
 
-//create a shedule every 3 minute
-
-
+//Functions
 const postImage = async () => {
     const ig = new IgApiClient();
     try {
@@ -31,7 +29,7 @@ const postImage = async () => {
 
         const { hdurl, title, explanation } = await fethData();
         const pathImage = hdurl;
-        const caption = `${title} \n\n${explanation} \n\n #NASA #NODEJS #SPACE #HELLOWORLD`;
+        const caption = `${title} \n\n${explanation} \n\n #nasa #javascript #universe`;
         const image = await Jimp.read(pathImage);
         const writeImage = await image.writeAsync('image.jpg');
 
@@ -52,14 +50,6 @@ const postImage = async () => {
     }
 }
 
-//Server
-app.use(express.json());
-const port = process.env.PORT || 4000;
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-    //postImage();
-});
-
 const fethData = async () => {
     const res = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}`);
     const data = res.data;
@@ -75,14 +65,22 @@ const deleteFile = (path) => {
     }
 };
 
+//Server
+app.use(express.json());
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+    //postImage();
+});
+
 // End points
 app.get('/hello', (req, res) => {
     res.send('Hello World!');
     console.log("Sayng hello ✌️");
 });
 
-app.post("/send", (req, res) => {
-    console.log("POSTING....");
+app.get("/send", (req, res) => {
+    console.log("Hello there 😊, posting image to Instagram....");
     postImage();
     res.send(`POSTING IMAGE AT....${new Date()}`);
 });
