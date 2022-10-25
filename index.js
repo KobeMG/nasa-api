@@ -10,21 +10,6 @@ const { readFile } = require('fs');
 const { promisify } = require('util');
 const readFileAsync = promisify(readFile);
 
-var process = require('process')
-for (const [key,value] of Object.entries(process.memoryUsage())){
-    console.log(`Memory usage by ${key}, ${value/1000000}MB `)
-}
-//cron job
-const cron = require('node-cron');
-//create a schedule every 1 seconds
-cron.schedule('*/1 * * * * *', () => {
-    console.log('running a task every 2 seconds');
-    for (const [key,value] of Object.entries(process.memoryUsage())){
-        console.log(`Memory usage by ${key}, ${value/1000000}MB `)   
-    }
-    console.log("---------------------------")
-});
-
 //Functions
 const postImage = async () => {
     const ig = new IgApiClient();
