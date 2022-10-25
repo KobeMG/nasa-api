@@ -10,6 +10,20 @@ const { readFile } = require('fs');
 const { promisify } = require('util');
 const readFileAsync = promisify(readFile);
 
+var process = require('process')
+for (const [key,value] of Object.entries(process.memoryUsage())){
+    console.log(`Memory usage by ${key}, ${value/1000000}MB `)
+}
+//cron job
+const cron = require('node-cron');
+//create a schedule every 1 seconds
+cron.schedule('*/1 * * * * *', () => {
+    console.log('running a task every 2 seconds');
+    for (const [key,value] of Object.entries(process.memoryUsage())){
+        console.log(`Memory usage by ${key}, ${value/1000000}MB `)   
+    }
+    console.log("---------------------------")
+});
 
 //Functions
 const postImage = async () => {
@@ -18,9 +32,9 @@ const postImage = async () => {
         console.log("Logging in...");
         ig.state.generateDevice('universeapp111');
         await ig.account.login(process.env.INSTAGRAM_USERNAME, process.env.INSTAGRAM_PASSWORD);
-        const { hdurl, title, explanation } = await fethData();
+        const { url, title, explanation } = await fethData();
         const caption = `${title} \n\n${explanation} \n\n #nasa #javascript #universe`;
-        const image = await Jimp.read(hdurl);
+        const image = await Jimp.read(url);
         await image.writeAsync('image.jpg');
 
         const published = await ig.publish.photo({
