@@ -19,7 +19,6 @@ const postImage = async () => {
     if (!isAImage(media_type) || (await checkIfPosted(title))) {
       return;
     }
-    await addToFirebase(title);
     ig.state.generateDevice("universeapp111");
     await ig.account.login(
       process.env.INSTAGRAM_USERNAME,
@@ -36,6 +35,7 @@ const postImage = async () => {
     deleteFile("image.jpg");
     if (published) {
       console.log("Image posted 😍");
+      await addToFirebase(title);
     } else {
       console.log("Image not posted 😢");
     }
