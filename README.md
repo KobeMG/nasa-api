@@ -1,3 +1,4 @@
+![logo2](https://i.imgur.com/wDcNK4H.jpg)
 # NASA Daily Image API Project
 
 A Node JS project that uses the official NASA API to get the daily image and details published by NASA and 
