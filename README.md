@@ -43,6 +43,16 @@ INSTAGRAM_USERNAME="your user name"
 INSTAGRAM_PASSWORD="your password"
 
 ```
+## Usage
+
+You can create a post using this route:
+```
+/send
+```
+For example:
+```
+https://localhost:4000/send
+```
 
 ## Instagram Account 
 
