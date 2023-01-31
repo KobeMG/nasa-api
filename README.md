@@ -43,3 +43,16 @@ INSTAGRAM_USERNAME="your user name"
 INSTAGRAM_PASSWORD="your password"
 
 ```
+
+## Instagram Account 
+
+![image (1)](https://user-images.githubusercontent.com/62812730/215905164-023ffaaf-67f6-4576-82d6-17e50acd26e9.jpg)
+
+## Contributing
+
+This project is open to contributions, feel free to contribute by forking the repository and creating pull requests.
+
+
+## License
+
+Note that all images and resources are copyrighted and I do not own any rights to them.
