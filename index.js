@@ -114,4 +114,12 @@ app.get("/send", (req, res) => {
   res.send(`POSTING IMAGE AT....${new Date()}`);
 });
 
+if (require.main === module) {
+  const port = process.env.PORT || 4000;
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
+} //Solo run if this file is run directly
+
+
 module.exports = { postImage };
