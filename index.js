@@ -113,3 +113,5 @@ app.get("/send", (req, res) => {
   postImage();
   res.send(`POSTING IMAGE AT....${new Date()}`);
 });
+
+module.exports = { postImage };
