@@ -24,7 +24,7 @@ const postImage = async () => {
       process.env.INSTAGRAM_USERNAME,
       process.env.INSTAGRAM_PASSWORD
     );
-    const caption = `${title} \n\n${explanation} \n\n #nasa #javascript #universe #space #astronomy #cosmos #science`;
+    const caption = `${title} \n\n${explanation} \n\n#nasa #javascript #universe #space #astronomy #cosmos #science`;
     const image = await Jimp.read(url);
     await image.writeAsync("image.jpg");
 
@@ -105,7 +105,7 @@ app.listen(port, () => {
 // End points
 app.get("/hello", (req, res) => {
   res.send("Hello World!");
-  console.log("Sayng hello ✌️");
+  console.log("Saying hello ✌️");
 });
 
 app.get("/send", (req, res) => {
